@@ -13,23 +13,16 @@ return(
            const duration = newBooking.duration / (60 * 1000)
            return(
              <div key={i} className="AppBooking">
-            <Timeline  maxEvents={8} placeholder='true'>
+            <Timeline  minEvents={i} placeholder='true'>
               <TimelineEvent
                 color='#87a2c7'
                 icon={FaRegCalendarCheck}
                 title="user1"
                 subtitle={newBooking.time}
                 width={newBooking.duration}
-                // subtitle={booking.time}
-                // subtitle={booking.userId}
+                
               />
-               <TimelineEvent
-                color='#9c2919'
-                icon={FaRegCalendarCheck}
-                title='user2'
-                subtitle={newBooking.time}
-                width={newBooking.duration}
-                />
+               
                 </Timeline>
         
         </div>

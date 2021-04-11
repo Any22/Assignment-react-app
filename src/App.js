@@ -85,7 +85,7 @@ function csvJSON(csv){
         </Dropzone>
       </div>
       <div className='App-main'>
-      <h3>Existing bookings:</h3>
+      
           <Bookings bookings={bookings} /> 
       </div>
      
