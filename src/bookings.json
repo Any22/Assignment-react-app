@@ -1,0 +1,27 @@
+[
+  {
+    "time": "01 Mar 2020 11:00:00 GMT+1000",
+    "duration": 180,
+    "user_id": "0001"
+  },
+  {
+    "time": "02 Mar 2020 11:00:00 GMT+1000",
+    "duration": 180,
+    "user_id": "0001"
+  },
+  {
+    "time": "03 Mar 2020 11:00:00 GMT+1000",
+    "duration": 180,
+    "user_id": "0001"
+  },
+  {
+    "time": "04 Mar 2020 11:00:00 GMT+1000",
+    "duration": 180,
+    "user_id": "0001"
+  },
+  {
+    "time": "05 Mar 2020 11:00:00 GMT+1000",
+    "duration": 180,
+    "user_id": "0001"
+  }
+]
