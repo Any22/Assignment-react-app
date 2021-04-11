@@ -1,95 +1,114 @@
-import React, { useState, useEffect } from 'react';
-import Dropzone from 'react-dropzone';
-import './App.css';
+import React, { useState, useEffect } from 'react'
+import Dropzone from 'react-dropzone'
+import './App.css'
+// import Loading from './Loading';
 import Bookings from './Bookings.js';
+ import NewBookings from './NewBookings.js';
 
 
-const apiUrl='http://localhost:3001';
- 
-function App() {
-const [loading,setLoading]=useState(false); 
-const [bookings,setBookings]=useState([]);
-const fetchthelist = async () =>{
-  
-try {
-    const response = await fetch(`${apiUrl}/bookings`);
-    const bookings = await response.json();
-    
-    setBookings(bookings);
-    console.log(bookings);
-    
-    }catch(error){
+
+const apiUrl = 'http://localhost:3001'
+
+export const App = () => {
+  const [loading,setLoading]=useState(false);
+  const [bookings, setBookings] = useState([]);
+  const [newBookings,setNewBookings]=useState([]);
+
+  const fetchthelist = async() =>{
+    // setLoading(true);
+
+   try {
+     const response = await fetch(`${apiUrl}/bookings`);
+     const bookings = await response.json();
+     console.log(bookings);
+    // setLoading(false);
+     setBookings(bookings);
+    }
+    catch(error){
+      setLoading(false);
       console.log(error);
     }
-  };
-
-  useEffect(() => {
-  fetchthelist();
-  }, []);
-
   
-  //loading file
+
+  };
+  useEffect(() => {
+    fetchthelist();
+   
+  }, [])
+
+function csvJSON(csv){
+    var lines=csv.split("\n");
+    var result = [];
+    var headers=lines[0].split(",");
+  
+    for(var i=1;i<lines.length-1;i++){  
+        var obj = {};
+        var currentline=lines[i].split(",");
+        
+        obj[headers[0]] = Date.parse(currentline[0].trim());
+        obj[headers[1]] = parseInt(currentline[1].trim());
+        obj[headers[2]] = currentline[2].trim();
+        result.push(obj);
+    }
+    return result;
+  }
+
   const onDrop = (files) => {
-    console.log(files);
-    setLoading(true);
-    
+      console.log(files);
+      let reader = new FileReader();
+      reader.onload = function(event) {
+      let bookingsCsv = event.target.result;
+      let newBookings = csvJSON(bookingsCsv);
+      newBookings.sort(function(a, b){return a.time - b.time});
+      console.log(newBookings);
+      setLoading(true);
+      setNewBookings(newBookings);
+    };
+    reader.readAsText(files[0]);
+    // setLoading(true);
   }
   
 
-  if (!loading)
-    return(
-          <div className='App'>
-          <div className='App-header'>
-            <Dropzone accept='.csv' onDrop={onDrop}>
-            {({getRootProps, getInputProps}) => (
-              <section>
-                <div {...getRootProps()}>
-                  <input {...getInputProps()} />
-                  <p>Drop some files here, or click to select files</p>
-                </div>
-              </section>
-            )}
-            </Dropzone>
-          </div>
-        </div>
-      );
-    
-    return(
-    <div className='App-main'>
-      <Bookings bookings={bookings} />  
+  if(!loading){
+    return (
+    <div className='App'>
+      <div className='App-header'>
+        <Dropzone accept='.csv' onDrop={onDrop}>
+        {({getRootProps, getInputProps}) => (
+          <section>
+            <div {...getRootProps()}>
+              <input {...getInputProps()} />
+              <p>Drop some files here, or click to select files</p>
+            </div>
+          </section>
+        )}
+        </Dropzone>
+      </div>
+      <div className='App-main'>
+      <h3>Existing bookings:</h3>
+          <Bookings bookings={bookings} /> 
+      </div>
+     
     </div>
-  );    
-   
-    
-} 
-  
+  );
+}
 
+  return(
+    <div>
+      
+      <NewBookings newBookings={newBookings}/>
+    </div>
+  );
+  
+  
+    
+      
+      
+}
+        
 export default App;
-
-    
   
   
   
 
-// return(
-//   <div className='App-main'>
-//         <p>Existing bookings:</p>
-//         {bookings.map((booking, i) => {
-//           const date = new Date(booking.time)
-//           const duration = booking.duration / (60 * 1000)
-//           return (
-//             <p key={i} className='App-booking'>
-                
-//               <span className='App-booking-time'>{date.toString()}</span>
-               
-//               <span className='App-booking-duration'>
-//                 {duration.toFixed(1)}
-//               </span>
-                
-//               <span className='App-booking-user'>{booking.userId}</span>
-//             </p>
-//           )
-//         })}
-//       </div>
-// );
 

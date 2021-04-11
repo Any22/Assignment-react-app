@@ -14,25 +14,31 @@ const Bookings = ({bookings}) =>{
            const duration = booking.duration / (60 * 1000)
            return(
              <div key={i} className="AppBooking">
-            <Timeline minEvents={5} placeholder>
-              <TimelineEvent
-                icon={FaRegCalendarCheck}
-                title='Time'
-                subtitle={booking.time}
-              />
+            <Timeline  maxEvents={1} placeholder='true'>
               <TimelineEvent
                 color='#87a2c7'
-
                 icon={FaRegCalendarCheck}
-                title='Duartion'
+                title="user1"
+                subtitle={booking.time}
+                width={booking.duration}
+                // subtitle={booking.time}
+                // subtitle={booking.userId}
+              />
+               <TimelineEvent
+                color='#9c2919'
+                
+                icon={FaRegCalendarCheck}
+                title='user1'
                 subtitle={booking.duration}
               />
-        <TimelineEvent
+              
+        {/* <TimelineEvent
           color='#9c2919'
+         
           icon={FaUser}
-          title='User-Id'
-          subtitle={booking.userId}
-        />
+          title='time3'
+          subtitle={booking.time}
+        />  */}
         </Timeline>
         
         </div>

@@ -8,7 +8,9 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "cors": "^2.8.5",
+    "csvtojson": "^2.0.10",
     "express": "^4.17.1",
+    "fs": "0.0.1-security",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-dropzone": "^11.3.1",
@@ -17,7 +19,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "server":"node server/index.js",
+    "server": "node server/index.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
