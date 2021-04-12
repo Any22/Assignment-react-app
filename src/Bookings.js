@@ -17,9 +17,10 @@ const Bookings = ({bookings}) =>{
               return <TimelineEvent
               key={i}
                 color='#87a2c7'
-                icon={FaRegCalendarCheck}
+                icon={FaUser}
                 title={booking.userId}
-                subtitle={booking.time}
+                
+                subtitle={date.toString()}
               />
                })}
            </Timeline>

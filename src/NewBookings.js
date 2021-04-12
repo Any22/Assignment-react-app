@@ -17,7 +17,7 @@ return(
                 color='#87a2c7'
                 icon={FaRegCalendarCheck}
                 title={newBooking.userId}
-                subtitle={newBooking.time}
+                subtitle={date.toString}
               />
              
           })}
