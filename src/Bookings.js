@@ -8,24 +8,25 @@ const Bookings = ({bookings}) =>{
         <div className='AppMain'>
           <h2>Existing bookings:</h2>
           
-          { bookings.map((booking,i) =>{
-          const date = new Date(booking.time);
-          // const date= date.getDate();
-           const duration = booking.duration / (60 * 1000)
-           return(
-             <div key={i} className="AppBooking">
-            <Timeline  minEvents={i} placeholder>
-              <TimelineEvent
+           
+             <Timeline  minEvents={5} placeholder>
+               { bookings.map((booking,i) =>{
+                 const date = new Date(booking.time);
+                 const duration = booking.duration / (60 * 1000)
+          
+              return <TimelineEvent
+              key={i}
                 color='#87a2c7'
                 icon={FaRegCalendarCheck}
                 title="user1"
                 subtitle={booking.time}
               />
-        </Timeline>
-        
-        </div>
-        ); //end of  inner return 
-        } ) }    
+               })}
+           </Timeline>
+      
+         
+          
+      
 </div>
 
   );

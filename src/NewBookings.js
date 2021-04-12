@@ -9,17 +9,16 @@ return(
           <h2>New bookings:</h2>
           { newBookings.map((newBooking,i) =>{
           const date = new Date(newBooking.time);
-          
            const duration = newBooking.duration / (60 * 1000)
            return(
              <div key={i} className="AppBooking">
-            <Timeline  minEvents={i} placeholder='true'>
+            <Timeline  minEvents={5} placeholder>
               <TimelineEvent
                 color='#87a2c7'
                 icon={FaRegCalendarCheck}
                 title="user1"
                 subtitle={newBooking.time}
-                width={newBooking.duration}
+                
                 
               />
                
