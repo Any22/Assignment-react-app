@@ -18,7 +18,7 @@ const Bookings = ({bookings}) =>{
               key={i}
                 color='#87a2c7'
                 icon={FaRegCalendarCheck}
-                title="user1"
+                title={booking.userId}
                 subtitle={booking.time}
               />
                })}

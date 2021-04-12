@@ -65,7 +65,7 @@ function csvJSON(csv){
       setNewBookings(newBookings);
     };
     reader.readAsText(files[0]);
-    // setLoading(true);
+    
   }
   
 
@@ -85,7 +85,6 @@ function csvJSON(csv){
         </Dropzone>
       </div>
       <div className='App-main'>
-      
           <Bookings bookings={bookings} /> 
       </div>
      
@@ -95,7 +94,6 @@ function csvJSON(csv){
 
   return(
     <div>
-      
       <NewBookings newBookings={newBookings}/>
     </div>
   );
