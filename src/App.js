@@ -37,18 +37,19 @@ export const App = () => {
   }, [])
 
 function csvJSON(csv){
-    var lines=csv.split("\n");
-    var result = [];
-    var headers=lines[0].split(",");
+   
+    let result = [];
+    let lines=csv.split("\n");
+    let headers=lines.shift();
   
-    for(var i=1;i<lines.length-1;i++){  
-        var obj = {};
-        var currentline=lines[i].split(",");
+    for(let i=0;i<lines.length-1;i++){  
+      let csvObj = {};
+      let currentline=lines[i].split(",");
         
-        obj[headers[0]] = Date.parse(currentline[0].trim());
-        obj[headers[1]] = parseInt(currentline[1].trim());
-        obj[headers[2]] = currentline[2].trim();
-        result.push(obj);
+        csvObj["time"] = Date.parse(currentline[0].trim());
+        csvObj["duration"] = parseInt(currentline[1].trim());
+        csvObj["userId"] = currentline[2].trim();
+        result.push(csvObj);
     }
     return result;
   }

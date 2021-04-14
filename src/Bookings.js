@@ -19,8 +19,8 @@ const Bookings = ({bookings}) =>{
                 color='#87a2c7'
                 icon={FaUser}
                 title={booking.userId}
-                
                 subtitle={date.toString()}
+                // action={duration.toFixed(1)}
               />
                })}
            </Timeline>

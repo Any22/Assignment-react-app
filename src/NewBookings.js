@@ -11,13 +11,13 @@ return(
           { newBookings.map((newBooking,i) =>{
           const date = new Date(newBooking.time)
           const duration = newBooking.duration / (60 * 1000)
-        
+          
             return <TimelineEvent
               key={i}
                 color='#87a2c7'
                 icon={FaRegCalendarCheck}
                 title={newBooking.userId}
-                subtitle={date.toString}
+                subtitle={date.toString()}
               />
              
           })}
